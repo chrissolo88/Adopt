@@ -49,8 +49,8 @@ def view_pet(pet_id):
 
 @app.route('/pets/<int:pet_id>/edit', methods=['GET', 'POST'])
 def edit_pet(pet_id):
-    form = AddPetForm()
     pet = Pet.query.get(pet_id)
+    form = AddPetForm(obj=pet)
     species = [(s.specie,s.specie) for s in Specie.query.all()]
     form.specie.choices = species
     if form.validate_on_submit():
@@ -63,11 +63,6 @@ def edit_pet(pet_id):
         flash(f'Editied Pet Name:{pet.name} Species:{form.specie.data}', 'success')
         return redirect(f'/pets/{pet_id}')
     else:
-        form.name.data = pet.name
-        form.specie.data = pet.specie.specie
-        form.age.data = pet.age
-        form.notes.data = pet.notes
-        form.photo_url.data = pet.photo_url
         return render_template('edit_pet_form.html', form=form, pet=pet)
     
 @app.route('/pets/<int:pet_id>/adopt', methods=['GET', 'POST'])
