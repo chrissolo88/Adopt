@@ -1,0 +1,14 @@
+<div class="col-4-lg col-3-m">
+    <div class="card m-2" style="width: 18rem;">
+        <img class="card-img-top" src="{{pet.photo_url}}" alt="{{pet.name}}">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/pets/{{pet.id}}">{{pet.name}}</a> - {{pet.age}}</h5>
+          <p class="card-text">{{pet.notes}}</p>
+          {% if pet.available == True %}
+            <a href="/pets/{{pet.id}}" class="btn btn-primary"><b>Available!</b></a>
+          {% else %}
+            <a href="#" class="btn btn-secondary disabled">Not Available</a>
+          {% endif %}
+        </div>
+    </div>
+</div>

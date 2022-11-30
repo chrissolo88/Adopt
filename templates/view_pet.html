@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Adopt: View Pet{% endblock %}
+{% block brand %}Adopt{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-2 ml-auto">
+        <img class="img-thumbnail" src="{{pet.photo_url}}" alt="">
+    </div>
+    <div class="col-4 mr-auto">
+        <h1>{{pet.name}}</h1>
+        <form action="">
+            <button class="btn btn-primary" formaction="/pets/{{pet.id}}/edit"><i class="fa-solid fa-pencil"></i> Edit</button>
+            {% if pet.available == True %}
+                <button class="btn btn-success" formaction="/pets/{{pet.id}}/adopt"> Adopt</button>
+            {% else %}
+                <button class="btn btn-success disabled" formaction="/pets/{{pet.id}}/adopt"> Not Available</button>
+            {% endif %}
+        </form>
+        <h1>Info</h1>
+        <ul>
+            <li>Specie: {{pet.specie.specie}}</li>
+            <li>Age: {{pet.age}}</li>
+            <li>Notes: {{pet.notes}}</li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Adopt: Add Pet{% endblock %}
+{% block brand %}Adopt{% endblock %}
+{% block content %}
+<h1>Add New Pet</h1>
+<form action="/pets/add" method="POST">
+{% include 'form.html' %}
+</form>
+{% endblock %}
